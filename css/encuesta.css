@@ -1,0 +1,34 @@
+#wrap1, #wrap2{
+  margin-top: 50px;
+  width: 500px;
+  float: left;
+}
+
+#wrap2{ background: red; height: 200px; }
+
+.drag{ 
+  background: green; 
+  float: left;
+  width: 100px;
+  height: 100px;
+  margin: 10px;
+}
+
+.ok{ border: 5px #eee solid ; }
+
+.clear{ clearfix: both; }
+
+#caja{
+
+	background:#98bf21;
+	
+	
+}
+.resp
+{
+	float: left;
+	margin: 10px;
+	height: 50px;
+	width: 50px;
+	background-color: red;
+}

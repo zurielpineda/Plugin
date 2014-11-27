@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>plugin</title>
+  <link rel="stylesheet" href="css/encuesta.css">
+</head>
+<body>
+  
+  <div id="mostrarPregunta"></div>
+
+  <button id="sig">Siguiente</button>
+
+  <button id="fondo">Cambiar Fondo</button>
+  
+  <div id="wrap1">
+    <div class="drag0 drag">0</div>
+    <div class="drag1 drag">1</div>
+    <div class="drag2 drag">2</div>
+    <div class="drag3 drag">3</div>
+    <div class="drag4 drag">4</div>
+  </div>
+
+  <div id="wrap2"></div>
+  
+  <script src="js/jquery.js"></script>
+  <script src="js/jquery-ui.js"></script>
+  <script src="js/encuesta.js"></script>
+  <script>
+    $.core({
+      preguntas: [
+        "pregunta 1",
+        "pregunta 2",
+        "pregunta 3",
+        "pregunta 4",
+        "pregunta 5",
+        "pregunta 6",
+        "pregunta 7",
+        "pregunta 8",
+      ],
+      bg: 'blue',
+    });
+  </script>
+</body>
+</html>
