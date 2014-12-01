@@ -29,7 +29,7 @@
       preguntas: [ "",
         "¿Quién eres?", "¿Qué te gusta hacer?", "preg 3", "Preg 4"       
       ],
-      result:[
+      result:[ 
       ]
 
 
@@ -61,18 +61,26 @@
         var resp = parseInt($(this).text());
        o.result.push(resp);
        console.log( o.result );
-
+      
       });
 
       $("#sig").click(function(){
       $("#caja").animate({
-    left:'750px',
-    height:'50px',
-    width:'350px'
-});
+        left:'750px',
+        height:'50px',
+        width:'350px'
 
-});     
+                        });
+      });     
   
+      $("#sig").click(function(){
+      $(".resp").animate({
+
+        margin: '10px',
+        height: '50px',
+        width: '50px'
+                        });
+      });     
     
   
 
