@@ -64,7 +64,7 @@
       
       });
 
-      $("#sig").click(function(){
+   /*   $("#sig").click(function(){
       $("#caja").animate({
         left:'750px',
         height:'50px',
@@ -80,7 +80,23 @@
         height: '50px',
         width: '50px'
                         });
-      });     
+      });    
+*/
+        $( "#sig" ).click(function() {
+        $( "#caja" ).animate({ "left": "+=350px" }, "slow" );
+        });
+
+      $( "#sig" ).click(function() {
+      $( ".resp:first" ).animate({
+        right: 300
+      }, {
+        duration: 1000,
+        step: function( now, fx ){
+          $( ".resp:gt(0)" ).css( "right", now );
+        }
+      });
+    });
+
     
   
 

@@ -18,17 +18,33 @@
 
 .clear{ clearfix: both; }
 
-#caja{
+/*#caja{
 
 	background:#98bf21;
 	float: left;
 
 	
-}
-.resp
+}*/
+#caja {
+    position: absolute;
+    background-color: #abc;
+    left: 50px;
+    width: 350px;
+    height: 50px;
+    margin: 5px;
+  }
+/*.resp
 {
 	float: right;
 	background-color: red;
 
 	
-}
+}*/
+.resp {
+    position: relative;
+    background-color: #abc;
+    width: 40px;
+    height: 50px;
+    float: right;
+    margin: 5px;
+  }
