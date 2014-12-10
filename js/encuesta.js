@@ -61,11 +61,11 @@
         
         if (o.pos < o.preguntas.length ){
           var resp = parseInt($(this).text());
-         o.result.push(resp);
-         console.log( o.result );
+          o.result.push(resp);
+          console.log( o.result );
           methods.changeQuestion( o );
           methods.mostrarpreg(o);
-           methods.mostrarresp(o);
+          methods.mostrarresp(o);
      
         }else{
           o.show.html( 'has terminado tu quiz' );
@@ -74,16 +74,22 @@
       });  
 
      
-    $(".dragresp" ).draggable();
-     $( "#caja2" ).droppable({
+    $(".dragresp" ).draggable({revert: true});
+    $( "#caja2" ).droppable({
       drop: function( event, ui ) {
+        
         var respuesta = ui.draggable.text();
         console.log( respuesta );
+        methods.changeQuestion( o );
+        methods.mostrarpreg(o);
+        methods.mostrarresp(o);
+        
       }
     });
 // entrar y salir de preguntas y respuestas
 //regrese la respuesta
-//y cuando acabe se pare 
+//y cuando acabe se pare
+ 
       
   }//core functions
 
