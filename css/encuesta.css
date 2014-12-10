@@ -25,13 +25,21 @@
 
 	
 }*/
-#caja {
+.caja {
     position: absolute;
     background-color: #abc;
-    left: 50px;
+   
     width: 350px;
     height: 50px;
     margin: 5px;
+  }
+
+  #caja2{
+    width: 500px;
+    height: 200px;
+    background: red;
+    position: relative;
+    margin: 80px auto 0;
   }
 /*.resp
 {
@@ -40,7 +48,8 @@
 
 	
 }*/
-.resp {
+.respuestas{ position: relative; }
+.resp, .dragresp {
     position: relative;
     background-color: #abc;
     width: 40px;
@@ -48,3 +57,9 @@
     float: right;
     margin: 5px;
   }
+
+  #bloque1 {
+    display: none;
+  }
+
+.clearfix{ clear: both; }

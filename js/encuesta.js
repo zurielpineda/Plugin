@@ -10,10 +10,20 @@
         o.pos++;
         o.show.html( o.preguntas[ o.pos ] );
       },
-      changeBck: function( o ){
-        o.body.css( 'background', o.bg );
-      }
-     
+      
+      
+      mostrarpreg: function( o ){
+
+        
+
+        $('.caja').css('left','50px');
+        $( ".caja" ).animate({ "left": "+=350px" }, "slow" );
+        },
+
+        mostrarresp: function(o){
+          $('.respuestas').css('right','50px');
+           $( ".respuestas" ).animate( {right: 300 }, 1000);
+        }
   };//methods
 
 
@@ -23,11 +33,11 @@
     var settings = {
 
       pos: 0,
-      show: $("#caja"),
+      show: $(".caja"),
       bg: '#ffff00',
       body: $( 'body' ),
-      preguntas: [ "",
-        "¿Quién eres?", "¿Qué te gusta hacer?", "preg 3", "Preg 4"       
+      preguntas: [
+        "¿Quién eres?", "¿Qué te gusta hacer?", "preg 3", "Preg 4", "pregunta 5"       
       ],
       result:[ 
       ]
@@ -37,69 +47,43 @@
 
     var o = $.extend( settings, options );
 
-
+    
       //======================================
       //      Programando Actividad
       //======================================
       methods.init( o );
+      methods.mostrarpreg(o);
+      methods.mostrarresp(o);
+      
 
-      $( '#fondo' ).click(function(){
-        methods.changeBck( o );
-      });
 
-      $( '#sig' ).click(function(){
+      $(".resp").click(function(){
         
-        if (o.pos < o.preguntas.length - 1){
+        if (o.pos < o.preguntas.length ){
+          var resp = parseInt($(this).text());
+         o.result.push(resp);
+         console.log( o.result );
           methods.changeQuestion( o );
+          methods.mostrarpreg(o);
+           methods.mostrarresp(o);
+     
         }else{
           o.show.html( 'has terminado tu quiz' );
         }
 
-      });
+      });  
 
-      $(".resp").click(function(){
-        var resp = parseInt($(this).text());
-       o.result.push(resp);
-       console.log( o.result );
-      
-      });
-
-   /*   $("#sig").click(function(){
-      $("#caja").animate({
-        left:'750px',
-        height:'50px',
-        width:'350px'
-
-                        });
-      });     
-  
-      $("#sig").click(function(){
-      $(".resp").animate({
-
-        margin: '10px',
-        height: '50px',
-        width: '50px'
-                        });
-      });    
-*/
-        $( "#sig" ).click(function() {
-        $( "#caja" ).animate({ "left": "+=350px" }, "slow" );
-        });
-
-      $( "#sig" ).click(function() {
-      $( ".resp:first" ).animate({
-        right: 300
-      }, {
-        duration: 1000,
-        step: function( now, fx ){
-          $( ".resp:gt(0)" ).css( "right", now );
-        }
-      });
+     
+    $(".dragresp" ).draggable();
+     $( "#caja2" ).droppable({
+      drop: function( event, ui ) {
+        var respuesta = ui.draggable.text();
+        console.log( respuesta );
+      }
     });
-
-    
-  
-
+// entrar y salir de preguntas y respuestas
+//regrese la respuesta
+//y cuando acabe se pare 
       
   }//core functions
 
