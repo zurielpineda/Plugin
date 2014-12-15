@@ -51,7 +51,7 @@
       //======================================
       //      Programando Actividad
       //======================================
-      methods.init( o );
+      methods.init(o);
       methods.mostrarpreg(o);
       methods.mostrarresp(o);
       
@@ -59,11 +59,11 @@
 
       $(".resp").click(function(){
         
-        if (o.pos < o.preguntas.length ){
+        if (o.pos < o.preguntas.length){
           var resp = parseInt($(this).text());
           o.result.push(resp);
           console.log( o.result );
-          methods.changeQuestion( o );
+          methods.changeQuestion(o);
           methods.mostrarpreg(o);
           methods.mostrarresp(o);
      
