@@ -51,16 +51,21 @@
 }*/
 .respuestas{ position: relative; }
 .resp, .dragresp {
+
     position: relative;
     background-color: #abc;
     width: 40px;
     height: 50px;
     float: right;
     margin: 5px;
+    z-index: 1;
   }
 
   #bloque1 {
-    display: none;
+ display: none;
+  }
+  #bloque2 {
+  display: 
   }
 
 .clearfix{ clear: both; }

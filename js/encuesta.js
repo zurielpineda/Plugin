@@ -75,14 +75,21 @@
 
      
     $(".dragresp" ).draggable({revert: true});
+    
     $( "#caja2" ).droppable({
       drop: function( event, ui ) {
-        
-        var respuesta = ui.draggable.text();
-        console.log( respuesta );
+
+        if (o.pos < o.preguntas.length){
+        var respuesta = parseInt($(ui.draggable).text());
+        o.result.push(respuesta);
+        console.log( o.result );
         methods.changeQuestion( o );
         methods.mostrarpreg(o);
         methods.mostrarresp(o);
+      }
+      else{
+          o.show.html( 'has terminado tu quiz' );
+        }
         
       }
     });
