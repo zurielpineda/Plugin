@@ -4,25 +4,37 @@
       
 
       init: function( o ){
-        o.show.html( o.preguntas[ o.pos ] );
+        var block = 'bloque'+o.bloque;
+        o.show.html( o.preguntas[ block ][ o.pos ] );
       },
       changeQuestion : function( o ){
         o.pos++;
-        o.show.html( o.preguntas[ o.pos ] );
+        var block = 'bloque'+o.bloque;
+        o.show.html( o.preguntas[ block ][ o.pos ] );
       },
       
       
-      mostrarpreg: function( o ){
+      mostrarpreg: function( o )
 
-        
-
-        $('.caja').css('left','50px');
-        $( ".caja" ).animate({ "left": "+=350px" }, "slow" );
+        {
+  
+          $('.caja').css('left','50px');
+          $( ".caja" ).animate({ "left": "+=350px" }, "slow" );
         },
 
         mostrarresp: function(o){
           $('.respuestas').css('right','50px');
            $( ".respuestas" ).animate( {right: 300 }, 1000);
+        },
+
+        MostrarBloque: function(o)
+        {
+          $("#bloque" + o.bloque).show(1000);
+        },
+
+         OcultarBloque: function(o)
+        {
+          $("#bloque" + o.bloque).hide(2000);
         }
   };//methods
 
@@ -31,14 +43,15 @@
 
     //Variables que se pueden utilizar dentro de nuestra aplicación
     var settings = {
-
+      bloque: 1,
       pos: 0,
       show: $(".caja"),
       bg: '#ffff00',
       body: $( 'body' ),
-      preguntas: [
-        "¿Quién eres?", "¿Qué te gusta hacer?", "preg 3", "Preg 4", "pregunta 5"       
-      ],
+      preguntas: {
+        bloque1: ["¿Quién eres?", "¿Qué te gusta hacer?", "preg 3", "Preg 4", "preguntas 5"],
+        bloque2: ["Pregunta 6", "Pregunta 7", "preg 8", "Preg 9", "pregunta 10"],
+      },
       result:[ 
       ]
 
@@ -51,48 +64,61 @@
       //======================================
       //      Programando Actividad
       //======================================
+      methods.MostrarBloque(o);
       methods.init(o);
       methods.mostrarpreg(o);
       methods.mostrarresp(o);
       
 
 
-      $(".resp").click(function(){
-        
-        if (o.pos < o.preguntas.length){
-          var resp = parseInt($(this).text());
-          o.result.push(resp);
-          console.log( o.result );
-          methods.changeQuestion(o);
-          methods.mostrarpreg(o);
-          methods.mostrarresp(o);
-     
-        }else{
-          o.show.html( 'has terminado tu quiz' );
-        }
-
+      $(".resp").click(function()
+      {
+            var block = "bloque"+ o.bloque;
+            
+            if (o.pos < o.preguntas[ block ].length)
+          {
+              var resp = parseInt($(this).text());
+                
+              o.result.push(resp);
+              if( o.pos == o.preguntas[ block ].length - 1 )
+              {
+                methods.OcultarBloque(o);
+                o.bloque += 1;
+                methods.MostrarBloque(o);  
+              } 
+              else
+              {
+                methods.changeQuestion(o);
+                methods.mostrarpreg(o);
+                methods.mostrarresp(o);
+              }
+              console.log( o.result );
+          }
       });  
 
      
-    $(".dragresp" ).draggable({revert: true});
-    
-    $( "#caja2" ).droppable({
-      drop: function( event, ui ) {
-
-        if (o.pos < o.preguntas.length){
-        var respuesta = parseInt($(ui.draggable).text());
-        o.result.push(respuesta);
-        console.log( o.result );
-        methods.changeQuestion( o );
-        methods.mostrarpreg(o);
-        methods.mostrarresp(o);
-      }
-      else{
-          o.show.html( 'has terminado tu quiz' );
+      $(".dragresp" ).draggable({revert: true});
+      
+      $( "#caja2" ).droppable(
+      {
+        drop: function( event, ui ) 
+        {
+            var block = "bloque" + o.bloque;
+            if (o.pos < o.preguntas[block].length)
+            {
+              var respuesta = parseInt($(ui.draggable).text());
+              o.result.push(respuesta);
+              console.log( o.result );
+              methods.changeQuestion( o );
+              methods.mostrarpreg(o);
+              methods.mostrarresp(o);
+            }
+            else
+            {
+              o.show.html( 'has terminado tu quiz' );
+            }
         }
-        
-      }
-    });
+      });
 // entrar y salir de preguntas y respuestas
 //regrese la respuesta
 //y cuando acabe se pare

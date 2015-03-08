@@ -1,0 +1,130 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+
+ <script src="js/jquery.js"></script>
+ <script src="js/jquery-ui.js"></script>
+ <script src="js/encuesta.js"></script>
+ <script type="text/javascript">
+
+	$(document).ready(function()
+	{
+			$("#checkbox_comprobar").click(function() 
+			{ 
+					
+				var	respuesta = [];
+				$('select').each(function() 
+					 {
+					    
+					    respuesta.push( parseInt( $(this).val() ) );
+					 });
+						console.log( respuesta );
+					 console.log($.inArray ( 5 , respuesta));
+					
+					var vacio = $.inArray ( 5 , respuesta);
+					if (vacio == -1)
+					
+							{
+								alert("Continua");
+							}
+					else  
+					{
+                        alert("Elementos vacios");
+					};
+	
+
+			});
+	
+	
+	});
+
+
+
+</script>
+
+<body>
+
+<form id="formulario" name="formulario" action="">
+
+	<table>
+		<tr>
+			<td>Atender y cuidar enfermos</td>
+			<td>
+				<select>
+					<option value="5">- Seleccionar -</option>
+					<option value="4">Me gusta mucho</option>
+				  	<option value="3">Me gusta algo</option>
+				  	<option value="2">Me es indiferente</option>
+				  	<option value="1">Me desagrada poco</option>
+				  	<option value="0">Me desagrada mucho </option>
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<td>Intervenir activamente en las discusiones de clase</td>
+			<td>
+				<select>
+					<option value="5">- Seleccionar -</option>
+					<option value="4">Me gusta mucho</option>
+				  	<option value="3">Me gusta algo</option>
+				  	<option value="2">Me es indiferente</option>
+				  	<option value="1">Me desagrada poco</option>
+				  	<option value="0">Me desagrada mucho </option>
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<td>Escribir cuentos, crónicas o articulos</td>
+			<td>
+				<select>
+					<option value="5">- Seleccionar -</option>
+					<option value="4">Me gusta mucho</option>
+				  	<option value="3">Me gusta algo</option>
+				  	<option value="2">Me es indiferente</option>
+				  	<option value="1">Me desagrada poco</option>
+				  	<option value="0">Me desagrada mucho </option>
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<td>Dibujar y pintar</td>
+			<td>
+					<select>
+					<option value="5">- Seleccionar -</option>
+					<option value="4">Me gusta mucho</option>
+				  	<option value="3">Me gusta algo</option>
+				  	<option value="2">Me es indiferente</option>
+				  	<option value="1">Me desagrada poco</option>
+				  	<option value="0">Me desagrada mucho </option>
+				</select>
+	</td>
+		</tr>
+		<tr>
+			<td>Cantar en coro estudiantil</td>
+			<td>
+				<select>
+					<option value="5">- Seleccionar -</option>
+					<option value="4">Me gusta mucho</option>
+				  	<option value="3">Me gusta algo</option>
+				  	<option value="2">Me es indiferente</option>
+				  	<option value="1">Me desagrada poco</option>
+				  	<option value="0">Me desagrada mucho </option>
+				</select>
+			</td>
+		</tr>
+	</table>
+
+	
+	
+
+	<br>
+	<input name="checkbox_comprobar" id="checkbox_comprobar" type="button" value="Comprobar" />
+</form>
+
+</body>
+</html>
