@@ -70,7 +70,8 @@
       methods.mostrarresp(o);
       
 
-
+      //Seleccionar con click
+      
       $(".resp").click(function()
       {
             var block = "bloque"+ o.bloque;
@@ -84,6 +85,7 @@
               {
                 methods.OcultarBloque(o);
                 o.bloque += 1;
+                o.pos = 0;
                 methods.MostrarBloque(o);  
               } 
               else
@@ -96,6 +98,7 @@
           }
       });  
 
+     // drag and drop
      
       $(".dragresp" ).draggable({revert: true});
       
@@ -112,13 +115,54 @@
               methods.changeQuestion( o );
               methods.mostrarpreg(o);
               methods.mostrarresp(o);
+
+              
+
             }
             else
             {
-              o.show.html( 'has terminado tu quiz' );
+            
+              methods.OcultarBloque(o);
+                o.bloque += 1;
+                o.pos = 0;
+                methods.MostrarBloque(o); 
             }
         }
       });
+
+      //Seleccionar
+      
+      $(document).ready(function()
+  {
+      $("#checkbox_comprobar").click(function() 
+      { 
+        
+        var respuesta = [];
+        $('select').each(function() 
+           {
+              
+              respuesta.push( parseInt( $(this).val() ) );
+           });
+            console.log( respuesta );
+           console.log($.inArray ( 5 , respuesta));
+          
+          var vacio = $.inArray ( 5 , respuesta);
+          if (vacio == -1)
+          
+              {
+                alert("Continua");
+              }
+          else  
+          {
+                        alert("Elementos vacios");
+          };
+  
+
+      });
+  
+  
+  });
+
 // entrar y salir de preguntas y respuestas
 //regrese la respuesta
 //y cuando acabe se pare
